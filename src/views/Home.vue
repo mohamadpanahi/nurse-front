@@ -8,7 +8,7 @@
         <Logo></Logo>
       </div>
       <div class="nav-container">
-
+        <Nav></Nav>
       </div>
     </div>
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
@@ -21,13 +21,15 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HomeBackground from '../components/HomeBackground'
 import Logo from '../components/Logo'
+import Nav from '../components/Nav'
 
 export default {
   name: 'Home',
   components: {
     // HelloWorld
     HomeBackground,
-    Logo
+    Logo,
+    Nav
   }
 }
 </script>
@@ -55,10 +57,20 @@ export default {
   .top-bar {
     margin: 4rem;
     padding: 0.5rem;
+    /*background: #2c3e50;*/
+    vertical-align: middle;
   }
 
   .logo-container {
     width: 4rem;
     height: 4rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .nav-container {
+    width: calc(100% - 4rem - 4rem);
+    display: inline-block;
+    vertical-align: middle;
   }
 </style>
