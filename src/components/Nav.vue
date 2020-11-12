@@ -38,7 +38,7 @@
             padding: 0.5rem 1.5rem;
             display: inline-block;
             border-radius: 100px;
-            transition: background-color 0.2s, color 0.2s;
+            transition: background-color 0.4s, color 0.4s;
             font-size: 1.2rem;
 
             &:hover {
