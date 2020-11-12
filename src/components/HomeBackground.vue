@@ -1,5 +1,5 @@
 <template>
-    <img class="background" src="../assets/back.jpg" alt="Nurse website"/>
+    <img class="background" src="../assets/back.png" alt="Nurse website"/>
 </template>
 
 <script>
