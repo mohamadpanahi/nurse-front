@@ -9,7 +9,26 @@
 </template>
 
 <style lang="scss">
+    @font-face {
+        font-family:"Vazir";
+        src: url("assets/font/Vazir-FD.ttf");
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family:"Vazir";
+        src: url("assets/font/Vazir-Bold-FD.ttf");
+        font-weight: 700;
+    }
+
+    @font-face {
+        font-family:"Vazir";
+        src: url("assets/font/Vazir-Light-FD.ttf");
+        font-weight: 100;
+    }
+
     * {
+        font-family: Vazir, sans-serif;
         box-sizing: border-box;
         margin: 0;
         padding: 0;

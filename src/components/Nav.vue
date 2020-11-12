@@ -1,16 +1,16 @@
 <template>
     <div class="nav">
         <div class="nav-item">
-            <router-link to="/">Home</router-link>
+            <router-link to="/">صفحه اصلی</router-link>
         </div>
         <div class="nav-item">
-            <router-link to="/LogIn">Log in</router-link>
+            <router-link to="/LogIn">ورود/ثبت نام</router-link>
         </div>
         <div class="nav-item">
-            <router-link to="/About">About Us</router-link>
+            <router-link to="/About">درباره ما</router-link>
         </div>
         <div class="nav-item">
-            <router-link to="/blog">Blog</router-link>
+            <router-link to="/blog">وبلاگ</router-link>
         </div>
     </div>
 </template>

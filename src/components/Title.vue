@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-        Nursing Home
+        خانه پرستار
     </div>
 </template>
 
@@ -12,15 +12,14 @@
 
 <style scoped>
     .title {
-        font-family: sans-serif;
         font-size: 8rem;
-        width: 40%;
-        margin-right: 10%;
-        text-align: left;
-        direction: ltr;
+        width: 30%;
+        margin-right: 8rem;
+        text-align: right;
+        direction: rtl;
         font-weight: bolder;
         color: white;
-        line-height: 80%;
+        line-height: 100%;
         margin-top: 2rem;
     }
 </style>

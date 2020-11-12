@@ -18,7 +18,7 @@
     </div>
     <div class="text-container">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt vitae semper quis lectus nulla at volutpat diam. Consequat ac felis donec et odio. Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc.
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
       </p>
     </div>
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
@@ -67,16 +67,21 @@ export default {
   }
 
   .top-bar {
-    margin: 4rem 4rem 0;
+    margin: 3rem 4rem 0;
     padding: 0.5rem;
     vertical-align: middle;
   }
 
   .logo-container {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     display: inline-block;
     vertical-align: middle;
+
+    padding: 1rem;
+    overflow: visible;
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 100px;
   }
 
   .nav-container {
@@ -91,12 +96,12 @@ export default {
 
     p {
       width: 40%;
-      margin-right: 10%;
+      margin-right: 8rem;
       color: white;
-      direction: ltr;
+      direction: rtl;
       text-align: justify;
       margin-top: 4rem;
-      line-height: 150%;
+      line-height: 200%;
       font-size: 1.2rem;
     }
   }
