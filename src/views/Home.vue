@@ -1,59 +1,67 @@
 <template>
   <div class="home">
-    <div class="background-container">
-      <HomeBackground></HomeBackground>
-    </div>
-    <div class="top-bar">
-      <div class="logo-container">
-        <router-link to="/">
-          <Logo></Logo>
-        </router-link>
+    <div class="home-top">
+      <div class="background-container">
+        <HomeBackground></HomeBackground>
       </div>
-      <div class="nav-container">
-        <Nav></Nav>
+      <div class="top-bar">
+        <div class="logo-container">
+          <router-link to="/">
+            <Logo></Logo>
+          </router-link>
+        </div>
+        <div class="nav-container">
+          <Nav></Nav>
+        </div>
+      </div>
+      <div class="text-container">
+        <Title></Title>
+      </div>
+      <div class="text-container">
+        <p>
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
+        </p>
       </div>
     </div>
-    <div class="text-container">
-      <Title></Title>
+    <div class="properties-container">
+      <Properties></Properties>
     </div>
-    <div class="text-container">
-      <p>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
-      </p>
-    </div>
-<!--    <img alt="Vue logo" src="../assets/logo.png">-->
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import HomeBackground from '../components/HomeBackground'
 import Logo from '../components/Logo'
 import Nav from '../components/Nav'
 import Title from '../components/Title'
+import Properties from '../components/Properties'
 
 export default {
   name: 'Home',
   components: {
-    // HelloWorld
     HomeBackground,
     Logo,
     Nav,
-    Title
+    Title,
+    Properties
   }
 }
 </script>
 
 <style scoped lang="scss">
   .home {
-    width: 100vw;
+    padding: 0;
+  }
+
+  .home-top {
+    width: 100%;
     height: 100vh;
     vertical-align: middle;
     position: relative;
     overflow: hidden;
     background-image: linear-gradient(to top right, rgba(69, 104, 220, 1), rgba(176, 106, 179, 1));
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .background-container {
