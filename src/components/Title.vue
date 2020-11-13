@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-        خانه پرستار
+        مدکام
     </div>
 </template>
 
@@ -20,6 +20,6 @@
         font-weight: bolder;
         color: white;
         line-height: 100%;
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
 </style>

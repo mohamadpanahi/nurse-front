@@ -53,7 +53,7 @@ export default {
     vertical-align: middle;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(to top right, rgba(69, 104, 220, 0.8), rgba(176, 106, 179, 0.8));
+    background-image: linear-gradient(to top right, rgba(69, 104, 220, 1), rgba(176, 106, 179, 1));
   }
 
   .background-container {
@@ -100,7 +100,7 @@ export default {
       color: white;
       direction: rtl;
       text-align: justify;
-      margin-top: 4rem;
+      margin-top: 6rem;
       line-height: 200%;
       font-size: 1.2rem;
     }
