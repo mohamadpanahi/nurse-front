@@ -9,7 +9,7 @@
         <div class="nav-item">
             <router-link to="/About">درباره ما</router-link>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" @click="clicked">
             <router-link to="/blog">وبلاگ</router-link>
         </div>
     </div>
@@ -17,7 +17,12 @@
 
 <script>
     export default {
-        name: "Nav"
+        name: "Nav",
+        methods:{
+            click() {
+                //send request
+            }
+        }
     }
 </script>
 

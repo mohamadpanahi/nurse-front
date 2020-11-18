@@ -89,6 +89,7 @@
     .properties {
         padding-top: 6rem;
         padding-bottom: 6rem;
+        background: #f9f9f9;
     }
 
     .text {

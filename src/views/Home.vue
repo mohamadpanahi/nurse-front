@@ -23,8 +23,17 @@
         </p>
       </div>
     </div>
+    <div class="description-container">
+      <InitialDescription></InitialDescription>
+    </div>
     <div class="properties-container">
       <Properties></Properties>
+    </div>
+    <div class="login_cards-container">
+      <LoginCards></LoginCards>
+    </div>
+    <div class="footer-container">
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -35,6 +44,9 @@ import Logo from '../components/Logo'
 import Nav from '../components/Nav'
 import Title from '../components/Title'
 import Properties from '../components/Properties'
+import InitialDescription from '../components/InitialDescription'
+import LoginCards from '../components/LoginCards'
+import Footer from '../components/Footer'
 
 export default {
   name: 'Home',
@@ -43,7 +55,10 @@ export default {
     Logo,
     Nav,
     Title,
-    Properties
+    Properties,
+    InitialDescription,
+    LoginCards,
+    Footer
   }
 }
 </script>
