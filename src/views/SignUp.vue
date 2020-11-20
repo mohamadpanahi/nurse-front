@@ -4,49 +4,45 @@
             <p class="title">
                 ثبت نام
             </p>
-            <form action="/api/v1/signup" method="post">
+            <form>
                 <div class="grid">
                     <div class="item">
                         <label for="name">نام</label>
-                        <input type="text" id="name" name="name" placeholder="نام خود را وارد کنید" required>
+                        <input type="text" id="name" name="name" placeholder="نام خود را وارد کنید" required
+                               v-model="user_name">
                     </div>
                     <div class="item">
                         <label for="phone">تلفن همراه</label>
                         <input type="tel" id="phone" name="phone" placeholder="0 9 - - - - - - - -" minlength="11"
-                               maxlength="11" required>
+                               maxlength="11" required v-model="user_phone" @blur="check_phone">
                     </div>
                     <div class="item">
                         <label for="password">رمز عبور</label>
-                        <input type="password" id="password" name="password" placeholder="**********" required>
+                        <input type="password" id="password" name="password" placeholder="**********" required
+                               v-model="user_password">
                     </div>
                     <div class="item">
                         <label for="confirm-password">تکرار رمز عبور</label>
                         <input type="password" id="confirm-password" name="confirm-password" placeholder="**********"
-                               required>
+                               required v-model="user_confirm">
                     </div>
                     <div class="item">
                         <label for="email">پست الکترونیک</label>
-                        <input type="email" id="email" name="email" placeholder="abcdefg@hijkl.mno">
+                        <input type="email" id="email" name="email" placeholder="abcdefg@hijkl.mno"
+                               v-model="user_email">
                     </div>
                     <div class="item">
                         <label for="province">استان</label>
-                        <input type="text" id="province" name="province" placeholder="تهران" required>
+                        <input type="text" id="province" name="province" placeholder="تهران" required
+                               v-model="user_province">
                     </div>
                     <div class="item">
                         <label for="city">شهر</label>
-                        <input type="text" id="city" name="city" placeholder="تهران" required>
+                        <input type="text" id="city" name="city" placeholder="تهران" required v-model="user_city">
                     </div>
                     <div class="item">
                         <label for="add">آدرس</label>
-                        <input type="text" id="add" name="add" placeholder="خیابان ..." required>
-                    </div>
-                    <div class="item">
-                        <!--          <label for="lat">آدرس</label>-->
-                        <input type="hidden" id="lat" name="lat" value="30" required>
-                    </div>
-                    <div class="item">
-                        <!--          <label for="lng">آدرس</label>-->
-                        <input type="hidden" id="lng" name="lng" value="25" required>
+                        <input type="text" id="add" name="add" placeholder="خیابان ..." required v-model="user_add">
                     </div>
                     <div class="item map-root">
                         <label class="map-title">آدرس روی نقشه</label>
@@ -58,14 +54,16 @@
                     <div class="item" id="role-container">
                         <p class="role-title">نقش</p>
                         <label for="role-nurse">پرستار</label>
-                        <input type="radio" id="role-nurse" name="role" required>
+                        <input type="radio" id="role-nurse" name="role" value="nurse" required v-model="user_role">
                         <label for="role-user">کاربر</label>
-                        <input type="radio" id="role-user" name="role" required checked>
+                        <input type="radio" id="role-user" name="role" value="user" required checked
+                               v-model="user_role">
                     </div>
                 </div>
                 <div class="button">
                     <div class="button-container">
-                        <input type="submit" value="ثبت نام" id="submit">
+                        <input v-show="!phone_checked || !not_empty" type="submit" value="ثبت نام" id="submit0" @click="do_signup" disabled>
+                        <input v-show="phone_checked && not_empty" type="submit" value="ثبت نام" id="submit" @click="do_signup">
                     </div>
                 </div>
             </form>
@@ -90,20 +88,103 @@
 
     import Geolocation from 'ol/Geolocation';
 
+    import axios from 'axios'
+
     export default {
         name: 'Home',
         data() {
             return {
-                lat: 0,
-                lng: 0
+                user_name: '',
+                user_phone: '',
+                user_password: '',
+                user_confirm: '',
+                user_email: '',
+                user_role: 'user',
+                user_province: '',
+                user_city: '',
+                user_add: '',
+                user_location: {},
+                user_address: {
+                    province: '',
+                    city: '',
+                    add: '',
+                    location: ''
+                },
+                phone_checked: false
             }
         },
         watch: {
-            lat() {
-                console.log([this.lat, this.lng])
+            user_province(to) {
+                this.user_address.province = to
+            },
+            user_city(to) {
+                this.user_address.city = to
+            },
+            user_add(to) {
+                this.user_address.add = to
+            },
+            user_location(to) {
+                this.user_address.location = to
+            }
+        },
+        computed: {
+            not_empty() {
+                return !!(this.user_name && this.user_phone && this.user_password && this.user_role && this.user_province && this.user_city &&
+                    this.user_add && this.user_location && this.user_location.location && this.user_location.location[0]
+                    && this.user_location.location[1])
+            },
+            signup_request() {
+                if (this.email)
+                    return {
+                        name: this.user_name,
+                        phone: this.user_phone,
+                        password: this.user_password,
+                        email: this.user_email,
+                        role: this.user_role,
+                        address: this.user_address
+                    }
+                else
+                    return {
+                        name: this.user_name,
+                        phone: this.user_phone,
+                        password: this.user_password,
+                        role: this.user_role,
+                        address: this.user_address
+                    }
             }
         },
         components: {},
+        methods: {
+            do_signup(e) {
+                e.preventDefault()
+                axios({
+                    method: 'POST',
+                    url: 'localhost:8080/api/v1/signup',
+                    data: this.signup_request
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            },
+            check_phone() {
+                axios({
+                    method: 'GET',
+                    url: 'localhost:8080/isFree',
+                    data: {
+                        phone: this.user_phone
+                    }
+                })
+                    .then(function (response) {
+                        this.phone_checked = true
+                    })
+                    .catch(function (error) {
+                        this.phone_checked = false
+                    })
+            }
+        },
         mounted() {
             // for pin
             const overlay = new Overlay({
@@ -138,7 +219,9 @@
 
 // handle click and move pin
             map.on('singleclick', e => {
-                console.log(toLonLat(e.coordinate));
+                this.user_location = {
+                    location: toLonLat(e.coordinate)
+                }
                 overlay.setPosition(e.coordinate);
             });
 
@@ -259,6 +342,7 @@
         height: 30rem;
         /*outline: rgba(0, 0, 255, 1) wave 4px;*/
         outline: 4px solid rgba(0, 0, 255, 0.8);
+        direction: ltr;
     }
 
     #map {
@@ -360,7 +444,7 @@
             display: inline-block;
         }
 
-        #submit {
+        #submit, #submit0 {
             font-size: large;
             font-weight: bold;
             color: white;
