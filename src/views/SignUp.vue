@@ -130,8 +130,7 @@
         computed: {
             not_empty() {
                 return !!(this.user_name && this.user_phone && this.user_password && this.user_role && this.user_province && this.user_city &&
-                    this.user_add && this.user_location && this.user_location.location && this.user_location.location[0]
-                    && this.user_location.location[1])
+                    this.user_add && this.user_location && this.user_location.location)
             },
             signup_request() {
                 if (this.email)
@@ -195,7 +194,7 @@
                 }
             });
 
-// map
+            // map
             const view = new View({
                 center: fromLonLat([51.678, 32.658]),
                 zoom: 12,
@@ -217,7 +216,7 @@
                 view
             });
 
-// handle click and move pin
+            // handle click and move pin
             map.on('singleclick', e => {
                 this.user_location = {
                     location: toLonLat(e.coordinate)
@@ -225,7 +224,7 @@
                 overlay.setPosition(e.coordinate);
             });
 
-// gps
+            // gps
             const geolocation = new Geolocation({
                 // enableHighAccuracy must be set to true to have the heading value.
                 trackingOptions: {
@@ -269,12 +268,12 @@
 
             new VectorLayer({map, source});
 
-// add GPS button
+            // add GPS button
             const locate = document.createElement('div');
             locate.className = 'ol-control ol-unselectable locate';
             locate.innerHTML = `<button title="Locate me"><svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" x="0" y="0" viewBox="0 0 469.333 469.333" style="display: block" xml:space="preserve" class=""><g transform="matrix(0.68,0,0,0.68,75.09343750000002,75.09343750000008)">
-<path xmlns="http://www.w3.org/2000/svg" d="M234.667,149.333c-47.147,0-85.333,38.187-85.333,85.333S187.52,320,234.667,320S320,281.813,320,234.667  S281.813,149.333,234.667,149.333z M425.387,213.333C415.573,124.373,344.96,53.76,256,43.947V0h-42.667v43.947  C124.373,53.76,53.76,124.373,43.947,213.333H0V256h43.947c9.813,88.96,80.427,159.573,169.387,169.387v43.947H256v-43.947  C344.96,415.573,415.573,344.96,425.387,256h43.947v-42.667H425.387L425.387,213.333z M234.667,384  c-82.453,0-149.333-66.88-149.333-149.333s66.88-149.333,149.333-149.333S384,152.213,384,234.667S317.12,384,234.667,384z" fill="#666666" data-original="#000000"/>
-</svg></button>`;
+                                    <path xmlns="http://www.w3.org/2000/svg" d="M234.667,149.333c-47.147,0-85.333,38.187-85.333,85.333S187.52,320,234.667,320S320,281.813,320,234.667  S281.813,149.333,234.667,149.333z M425.387,213.333C415.573,124.373,344.96,53.76,256,43.947V0h-42.667v43.947  C124.373,53.76,53.76,124.373,43.947,213.333H0V256h43.947c9.813,88.96,80.427,159.573,169.387,169.387v43.947H256v-43.947  C344.96,415.573,415.573,344.96,425.387,256h43.947v-42.667H425.387L425.387,213.333z M234.667,384  c-82.453,0-149.333-66.88-149.333-149.333s66.88-149.333,149.333-149.333S384,152.213,384,234.667S317.12,384,234.667,384z" fill="#666666" data-original="#000000"/>
+                                    </svg></button>`;
 
             locate.addEventListener('click', function () {
                 if (!source.isEmpty()) {
@@ -291,7 +290,7 @@
                 })
             );
 
-// set initial location
+            // set initial location
             window.addEventListener('load', () => {
                 setTimeout(() => {
                     if (!source.isEmpty()) {
@@ -303,24 +302,6 @@
                 }, 500);
             });
         }
-        /*
-        POST /api/v1/signup
-        {
-          ,'علی سالمی' :*name
-          phone*: '09123456789',
-          password*: '12345678',
-          email,
-          role*: 'user || nurse',
-          address*: {
-            ,'اصفهان' :*province
-            ,'خمینی شهر' :*city
-            ,'خیابان ...' :*add
-            location*: {
-              coordinates*: [12.25, -23.63]
-            }
-          }
-        }
-        */
     }
 </script>
 
